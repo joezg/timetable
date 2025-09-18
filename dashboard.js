@@ -204,15 +204,12 @@ export const dashboard = {
                 const dayNamesEn = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
                 const tomorrowEn = dayNamesEn[(today.getDay() + 1) % 7];
                 const tomorrowShiftData = user.shifts[currentShift]?.[tomorrowEn];
-                if (tomorrowShiftData) {
-                    const hourKeys = Object.keys(tomorrowShiftData).map(k => user.hours[k] ? user.hours[k].start : null).filter(h => h !== null);
-                    if (hourKeys.length > 0) {
-                        hourKeys.sort();
-                        const schoolStart = hourKeys[0];
-                        schoolTimeText = `Sljedeći školski dan počinje u: ${schoolStart}`;
-                    } else {
-                        schoolTimeText = 'Sutra je neradan dan!';
-                    }
+
+                const tomorrowChunks = this.getChunks(tomorrowShiftData, user.hours, 0);
+
+                if (tomorrowChunks.nextChunk) {
+                    const schoolStart = tomorrowChunks.nextChunk[0].hourInfo.start;
+                    schoolTimeText = `Škola počinje sutra u: ${schoolStart}`;
                 } else {
                     schoolTimeText = 'Sutra je neradan dan!';
                 }
