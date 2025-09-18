@@ -9,8 +9,10 @@ export const timetable = {
         //set highlight tomorrow if today is after 21
         //or if today is weekend
         this.highlightTomorrow = false;
+        const currentShift = dashboard.getCurrentShift(data);
         const now = dashboard.getToday();
-        if (now.getHours() >= 21 || now.getDay() === 0 || now.getDay() === 6) {
+        const cutoffTime = currentShift === 'morning' ? 18 : 21;
+        if (now.getHours() >= cutoffTime || now.getDay() === 0 || now.getDay() === 6) {
             this.highlightTomorrow = true;
         }
 
