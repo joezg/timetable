@@ -6,6 +6,14 @@ export const timetable = {
         this.timetableElement.id = 'timetable';
         container.appendChild(this.timetableElement);
 
+        //set highlight tomorrow if today is after 21
+        //or if today is weekend
+        this.highlightTomorrow = false;
+        const now = dashboard.getToday();
+        if (now.getHours() >= 21 || now.getDay() === 0 || now.getDay() === 6) {
+            this.highlightTomorrow = true;
+        }
+
         this.renderTimeTable(data);
     },
     renderShift: function(data, shift) {
@@ -18,15 +26,28 @@ export const timetable = {
         timetableGrid.appendChild(document.createElement('div')); // Empty top-left cell
         // Get current day index (0=Monday, 4=Friday)
         const today = dashboard.getToday();
-        const jsDay = today.getDay(); // 0=Sunday, 1=Monday, ...
+        let jsDay = today.getDay(); // 0=Sunday, 1=Monday, ...
+        if (this.highlightTomorrow) {
+            //coincidentally, this works correctly even if today is Saturday (6) or Sunday (0),
+            //but Friday (5) will wrap to Sunday (0) which is fine since there is no class on weekend
+            jsDay = (jsDay + 1) % 6;
+        }
         // Map JS day to timetable day index
         const dayIdx = jsDay >= 1 && jsDay <= 5 ? jsDay - 1 : -1;
+        
         days.forEach((day, idx) => {
             const dayCell = document.createElement('div');
             dayCell.textContent = day;
             dayCell.className = 'timetable-day-header';
             if (idx === dayIdx) {
                 dayCell.classList.add('current-day');
+                dayCell.appendChild(document.createElement('br'));
+
+                let label = '(danas)';
+                if (this.highlightTomorrow) {
+                    label = '(sljedeći radni dan)';
+                }
+                dayCell.appendChild(document.createTextNode(label));
             }
             timetableGrid.appendChild(dayCell);
         });
