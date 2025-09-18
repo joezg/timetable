@@ -20,12 +20,21 @@ nav {
     position: sticky;
     top: 0;
     font-size: 2em;
+    background-color: var(--color);
 }
 
 nav a {
-    color: white;
+    color: #a2a2a2;
     text-decoration: none;
     padding: 10px;
+}
+
+nav a.selected {
+    color: white;
+    background-color: var(--color);
+    border-radius: 6px;
+    font-weight: bold;
+    filter: brightness(0.9);
 }
 
 #dashboard {
