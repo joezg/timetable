@@ -43,6 +43,7 @@ nav a.selected {
 
 .timetable-shift {
     display: none;
+    font-size: 1.2em;
 }
 
 .timetable-shift.current-shift {
@@ -62,6 +63,13 @@ nav a.selected {
     color: #e2e2e2;
     padding: 8px 0;
 }
+.timetable-day-header.current-day {
+    background: var(--color);
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border-radius: 6px;
+}
 .timetable-hour-row {
     font-weight: bold;
     text-align: center;
@@ -78,10 +86,25 @@ nav a.selected {
     padding: 4px;
 }
 
+.timetable-hour-row,
+.timetable-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.timetable-cell.current-day {
+    border: var(--color) solid 1px;
+}
+.timetable-cell.current-day.mandatory-hour {
+    border: #e2e2e2 solid 1px;
+}
+
 .mandatory-hour {
     background-color: var(--color);
     font-weight: bold;
-    color: #e2e2e2;
+    color: white;
 }
 
 .not-attending-hour {

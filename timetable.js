@@ -16,10 +16,18 @@ export const timetable = {
         // Header row
         const days = ['Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak'];
         timetableGrid.appendChild(document.createElement('div')); // Empty top-left cell
-        days.forEach(day => {
+        // Get current day index (0=Monday, 4=Friday)
+        const today = new Date();
+        const jsDay = today.getDay(); // 0=Sunday, 1=Monday, ...
+        // Map JS day to timetable day index
+        const dayIdx = jsDay >= 1 && jsDay <= 5 ? jsDay - 1 : -1;
+        days.forEach((day, idx) => {
             const dayCell = document.createElement('div');
             dayCell.textContent = day;
             dayCell.className = 'timetable-day-header';
+            if (idx === dayIdx) {
+                dayCell.classList.add('current-day');
+            }
             timetableGrid.appendChild(dayCell);
         });
 
@@ -69,7 +77,7 @@ export const timetable = {
             hourRow.className = 'timetable-hour-row';
             timetableGrid.appendChild(hourRow);
 
-            days.forEach(day => {
+            days.forEach((day, idx) => {
                 // Map Croatian day to English
                 const dayMap = {
                     'Ponedjeljak': 'monday',
@@ -81,6 +89,9 @@ export const timetable = {
                 const dayEn = dayMap[day];
                 let cell = document.createElement('div');
                 cell.className = 'timetable-cell';
+                if (idx === dayIdx) {
+                    cell.classList.add('current-day');
+                }
                 let subjects = [];
                 let isMandatory = false;
                 let doesNotAttend = false;
@@ -89,7 +100,6 @@ export const timetable = {
                     if (data.shifts[shift][dayEn][hourKey].status === 'mandatory') {
                         isMandatory = true;
                     }
-
                     if (data.shifts[shift][dayEn][hourKey].status === 'notAttending') {
                         doesNotAttend = true;
                     }
