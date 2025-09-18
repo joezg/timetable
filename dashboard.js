@@ -33,6 +33,79 @@ export const dashboard = {
         }
         return currentShift;
     },
+    getChunks: function(shiftData, hours, now) {
+        const today = this.getToday();
+        //tametable can be in chunks (i.e. there is a gap between classes)
+        //find the current chunk, if any
+        //find the previous chunk, if any
+        //find the next chunk if any
+        let currentChunk = null;
+        let previousChunk = null;
+        let nextChunk = null;
+        let currentClass = null;
+        const futureChunks = [];
+
+        if (shiftData) {
+            let chunks = [];
+            let chunk = [];
+            let lastEnd = null;
+
+            // Build chunks (continuous blocks of hours, skip optional and notAttending)
+            for (const hourKey of Object.keys(shiftData)) {
+                const hourInfo = hours[hourKey];
+                const hourStatus = shiftData[hourKey]?.status;
+                if (hourInfo && hourStatus !== 'optional' && hourStatus !== 'notAttending') {
+                    const [startH, startM] = hourInfo.start.split(':').map(Number);
+                    const [endH, endM] = hourInfo.end.split(':').map(Number);
+                    const startTime = startH + startM / 60;
+                    const endTime = endH + endM / 60;
+
+                    if (lastEnd !== null && startTime - lastEnd > 0.6) {
+                        // Gap detected, push previous chunk
+                        if (chunk.length) chunks.push(chunk);
+                        chunk = [];
+                    }
+                    chunk.push({ hourKey, startTime, endTime, hourInfo });
+                    lastEnd = endTime;
+                }
+            }
+            if (chunk.length) chunks.push(chunk);
+
+            // Find current, previous, next chunk
+            for (let i = 0; i < chunks.length; i++) {
+                const c = chunks[i];
+                const chunkStart = c[0].startTime;
+                const chunkEnd = c[c.length - 1].endTime;
+                if (now >= chunkStart && now <= chunkEnd) {
+                    currentChunk = c;
+                    previousChunk = i > 0 ? chunks[i - 1] : null;
+                } else if (now < chunkStart) {
+                    futureChunks.push(c);
+                } else {
+                    previousChunk = c;
+                }
+            }
+
+            nextChunk = futureChunks.length > 0 ? futureChunks[0] : null;
+
+            // Find currentClass (even if optional)
+            for (const hourKey of Object.keys(shiftData)) {
+                const hourInfo = hours[hourKey];
+                if (hourInfo) {
+                    const [startH, startM] = hourInfo.start.split(':').map(Number);
+                    const [endH, endM] = hourInfo.end.split(':').map(Number);
+                    const startTime = startH + startM / 60;
+                    const endTime = endH + endM / 60;
+                    if (now >= startTime && now <= endTime) {
+                        currentClass = { hourKey, startTime, endTime, hourInfo, status: shiftData[hourKey]?.status };
+                        break;
+                    }
+                }
+            }
+        }
+
+        return { currentChunk, previousChunk, nextChunk, futureChunks, currentClass };
+    },
     renderUser: function(user) {
         const userCard = document.createElement('div');
         userCard.className = 'user-card';
@@ -56,82 +129,19 @@ export const dashboard = {
         }
         userCard.appendChild(shiftElement);
 
-        //tametable can be in chunks (i.e. there is a gap between classes)
-        //find the current chunk, if any
-        //find the previous chunk, if any
-        //find the next chunk if any
-        let currentChunk = null;
-        let previousChunk = null;
-        let nextChunk = null;
-        let currentClass = null;
+        let chunks = null;
         let shiftData = null;
-        const futureChunks = [];
-
         if (currentShift && user.shifts && user.hours) {
             const dayNamesEn = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
             const todayEn = dayNamesEn[today.getDay()];
             shiftData = user.shifts[currentShift]?.[todayEn];
 
-            if (shiftData) {
-                const now = today.getHours() + today.getMinutes() / 60;
-                let chunks = [];
-                let chunk = [];
-                let lastEnd = null;
+            const now = today.getHours() + today.getMinutes() / 60;
 
-                // Build chunks (continuous blocks of hours, skip optional and notAttending)
-                for (const hourKey of Object.keys(shiftData)) {
-                    const hourInfo = user.hours[hourKey];
-                    const hourStatus = shiftData[hourKey]?.status;
-                    if (hourInfo && hourStatus !== 'optional' && hourStatus !== 'notAttending') {
-                        const [startH, startM] = hourInfo.start.split(':').map(Number);
-                        const [endH, endM] = hourInfo.end.split(':').map(Number);
-                        const startTime = startH + startM / 60;
-                        const endTime = endH + endM / 60;
-
-                        if (lastEnd !== null && startTime - lastEnd > 0.6) {
-                            // Gap detected, push previous chunk
-                            if (chunk.length) chunks.push(chunk);
-                            chunk = [];
-                        }
-                        chunk.push({ hourKey, startTime, endTime, hourInfo });
-                        lastEnd = endTime;
-                    }
-                }
-                if (chunk.length) chunks.push(chunk);
-
-                // Find current, previous, next chunk
-                for (let i = 0; i < chunks.length; i++) {
-                    const c = chunks[i];
-                    const chunkStart = c[0].startTime;
-                    const chunkEnd = c[c.length - 1].endTime;
-                    if (now >= chunkStart && now <= chunkEnd) {
-                        currentChunk = c;
-                        previousChunk = i > 0 ? chunks[i - 1] : null;
-                    } else if (now < chunkStart) {
-                        futureChunks.push(c);
-                    } else {
-                        previousChunk = c;
-                    }
-                }
-
-                nextChunk = futureChunks.length > 0 ? futureChunks[0] : null;
-
-                // Find currentClass (even if optional)
-                for (const hourKey of Object.keys(shiftData)) {
-                    const hourInfo = user.hours[hourKey];
-                    if (hourInfo) {
-                        const [startH, startM] = hourInfo.start.split(':').map(Number);
-                        const [endH, endM] = hourInfo.end.split(':').map(Number);
-                        const startTime = startH + startM / 60;
-                        const endTime = endH + endM / 60;
-                        if (now >= startTime && now <= endTime) {
-                            currentClass = { hourKey, startTime, endTime, hourInfo, status: shiftData[hourKey]?.status };
-                            break;
-                        }
-                    }
-                }
-            }
+            chunks = this.getChunks(shiftData, user.hours, now);
         }
+
+        const { currentChunk, previousChunk, nextChunk, futureChunks, currentClass } = chunks || {};
 
         let userStatusText = 'N/A';
         let userStatus = "atHome";
