@@ -1,6 +1,7 @@
 import data from './timetable.json' with { type: 'json' }; 
 import { header } from './header.js';
 import { dashboard } from './dashboard.js';
+import { timetable } from './timetable.js';
 
 const mainContainer = document.getElementById('main');
 header.init(mainContainer, data);
@@ -15,7 +16,7 @@ const render = (hash) => {
         dashboard.init(contentNode, data);
     } else {
         const userName = hash.substring(1);
-        contentNode.innerHTML += `<h1>Welcome, ${userName}</h1>`;
+        timetable.init(contentNode, data.find(u => u.name === userName));
     }
 }
 

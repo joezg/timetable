@@ -32,3 +32,42 @@ nav a {
 #dashboard {
     font-size: 1.5em;
 }
+
+.timetable-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin: 20px 0;
+}
+.timetable-day-header {
+    font-weight: bold;
+    text-align: center;
+    background: #222;
+    color: #e2e2e2;
+    padding: 8px 0;
+}
+.timetable-hour-row {
+    font-weight: bold;
+    text-align: center;
+    background: #333;
+    color: #e2e2e2;
+    padding: 8px 0;
+}
+.timetable-cell {
+    text-align: center;
+    min-height: 40px;
+    background: #181818;
+    color: #e2e2e2;
+    border: 1px solid #444;
+    padding: 4px;
+}
+
+.mandatory-hour {
+    background-color: #800080;
+    font-weight: bold;
+    color: #e2e2e2;
+}
+
+.not-attending-hour {
+    color: #626262;
+}

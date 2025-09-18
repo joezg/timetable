@@ -290,6 +290,16 @@
                             }
                         ],
                         "status": "mandatory"
+                    },
+                    "2A": {
+                        "subjects": [
+                            {
+                                "name": "njemački",
+                                "room": 14
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
                     }
                 },
                 "friday": {
