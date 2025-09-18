@@ -17,7 +17,7 @@ export const timetable = {
         const days = ['Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak'];
         timetableGrid.appendChild(document.createElement('div')); // Empty top-left cell
         // Get current day index (0=Monday, 4=Friday)
-        const today = new Date();
+        const today = dashboard.getToday();
         const jsDay = today.getDay(); // 0=Sunday, 1=Monday, ...
         // Map JS day to timetable day index
         const dayIdx = jsDay >= 1 && jsDay <= 5 ? jsDay - 1 : -1;
