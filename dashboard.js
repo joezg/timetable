@@ -37,13 +37,20 @@ export const dashboard = {
 
         const userName = document.createElement('h2');
         userName.textContent = user.name;
+        userName.style.setProperty('--color', user.color);
+        userName.classList.add('user-name');
         userCard.appendChild(userName);
 
         // Add current shift to user card
         const currentShift = this.getCurrentShift(user);
         const shiftElement = document.createElement('div');
         shiftElement.className = 'user-shift';
-        shiftElement.textContent = `Trenutna smjena: ${currentShift === 'morning' ? 'jutarnja' : 'poslijepodnevna'}`;
+        const dayIndex = today.getDay();
+        if (dayIndex === 0 || dayIndex === 6) {
+            shiftElement.textContent = 'Neradni dan';
+        } else {
+            shiftElement.textContent = `Trenutna smjena: ${currentShift === 'morning' ? 'jutarnja' : 'poslijepodnevna'}`;
+        }
         userCard.appendChild(shiftElement);
 
         //tametable can be in chunks (i.e. there is a gap between classes)
@@ -131,7 +138,7 @@ export const dashboard = {
         } else if (previousChunk) {
             const lastHour = previousChunk[previousChunk.length - 1];
             const schoolEnd = lastHour.hourInfo.end;
-            userStatusText = `Škola gotova od ${schoolEnd}`;
+            userStatusText = `Škola je gotova od ${schoolEnd}`;
         } else {
             userStatusText = 'Kod kuće';
         }
@@ -177,6 +184,25 @@ export const dashboard = {
                 }
             } else {
                 schoolTimeText = `${label} u: ${schoolStart}`;
+            }
+        } else {
+            //get the time of the school next day, if any
+            if (user.shifts && user.hours && currentShift) {
+                const dayNamesEn = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+                const tomorrowEn = dayNamesEn[(today.getDay() + 1) % 7];
+                const tomorrowShiftData = user.shifts[currentShift]?.[tomorrowEn];
+                if (tomorrowShiftData) {
+                    const hourKeys = Object.keys(tomorrowShiftData).map(k => user.hours[k] ? user.hours[k].start : null).filter(h => h !== null);
+                    if (hourKeys.length > 0) {
+                        hourKeys.sort();
+                        const schoolStart = hourKeys[0];
+                        schoolTimeText = `Sljedeći školski dan počinje u: ${schoolStart}`;
+                    } else {
+                        schoolTimeText = 'Sutra je neradan dan!';
+                    }
+                } else {
+                    schoolTimeText = 'Sutra je neradan dan!';
+                }
             }
         }
         const schoolTimeElement = document.createElement('div');
