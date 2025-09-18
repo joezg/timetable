@@ -87,3 +87,25 @@ nav a.selected {
 .not-attending-hour {
     color: #626262;
 }
+
+.shift-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 16px 0;
+}
+.shift-btn {
+    background: #222;
+    color: #e2e2e2;
+    border: none;
+    padding: 10px 24px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.shift-btn.selected {
+    background: var(--color);
+    color: #e2e2e2;
+    font-weight: bold;
+}

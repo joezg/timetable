@@ -114,55 +114,56 @@ export const timetable = {
     renderTimeTable: function(data) {
         const currentShift = dashboard.getCurrentShift(data);
 
-        const shiftSelector = document.createElement('select');
-        shiftSelector.className = 'shift-selector';
+        // Create shift toggle
+        const shiftToggle = document.createElement('div');
+        shiftToggle.className = 'shift-toggle';
         const shifts = [
             { value: 'morning', label: 'Jutarnja smjena' },
             { value: 'afternoon', label: 'Poslijepodnevna smjena' }
         ];
         shifts.forEach(shift => {
-            const option = document.createElement('option');
-            option.value = shift.value;
-            option.textContent = shift.label;
-            if (shift.value === currentShift) option.selected = true;
-            shiftSelector.appendChild(option);
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.textContent = shift.label;
+            btn.className = 'shift-btn';
+            if (shift.value === currentShift) btn.classList.add('selected');
+            btn.dataset.shift = shift.value;
+            shiftToggle.appendChild(btn);
         });
-        this.timetableElement.appendChild(shiftSelector);
+        this.timetableElement.appendChild(shiftToggle);
 
         // Render both shifts
         const morningShift = document.createElement('div');
         morningShift.className = 'timetable-shift';
-        const morningTitle = document.createElement('h2');
-        morningTitle.textContent = 'Jutarnja smjena';
-        morningShift.appendChild(morningTitle);
         morningShift.appendChild(this.renderShift(data, 'morning'));
         if (currentShift === 'morning') {
             morningShift.classList.add('current-shift');
         }
-
         this.timetableElement.appendChild(morningShift);
 
         const afternoonShift = document.createElement('div');
         afternoonShift.className = 'timetable-shift';
-        const afternoonTitle = document.createElement('h2');
-        afternoonTitle.textContent = 'Poslijepodnevna smjena';
-        afternoonShift.appendChild(afternoonTitle);
         afternoonShift.appendChild(this.renderShift(data, 'afternoon'));
         if (currentShift === 'afternoon') {
             afternoonShift.classList.add('current-shift');
         }
         this.timetableElement.appendChild(afternoonShift);
-        shiftSelector.addEventListener('change', () => {
-            const selectedShift = shiftSelector.value;
-            if (selectedShift === 'morning') {
-                morningShift.classList.add('current-shift');
-                afternoonShift.classList.remove('current-shift');
-            } else {
-                afternoonShift.classList.add('current-shift');
-                morningShift.classList.remove('current-shift');
+
+        // Toggle logic
+        shiftToggle.addEventListener('click', (e) => {
+            if (e.target.classList.contains('shift-btn')) {
+                const selectedShift = e.target.dataset.shift;
+                shiftToggle.querySelectorAll('.shift-btn').forEach(btn => btn.classList.remove('selected'));
+                e.target.classList.add('selected');
+                if (selectedShift === 'morning') {
+                    morningShift.classList.add('current-shift');
+                    afternoonShift.classList.remove('current-shift');
+                } else {
+                    afternoonShift.classList.add('current-shift');
+                    morningShift.classList.remove('current-shift');
+                }
             }
         });
-        
         //set css variable --color to data.color
         if (data && data.color) {
             this.timetableElement.style.setProperty('--color', data.color);
