@@ -1,3 +1,5 @@
+import { dashboard } from "./dashboard.js";
+
 export const timetable = {
     init: function(container, data) {
         this.timetableElement = document.createElement('div');
@@ -110,17 +112,31 @@ export const timetable = {
     },
 
     renderTimeTable: function(data) {
+        const currentShift = dashboard.getCurrentShift(data);
         // Render both shifts
+        const morningShift = document.createElement('div');
+        morningShift.className = 'timetable-shift';
         const morningTitle = document.createElement('h2');
         morningTitle.textContent = 'Jutarnja smjena';
-        this.timetableElement.appendChild(morningTitle);
-        this.timetableElement.appendChild(this.renderShift(data, 'morning'));
+        morningShift.appendChild(morningTitle);
+        morningShift.appendChild(this.renderShift(data, 'morning'));
+        if (currentShift === 'morning') {
+            morningShift.classList.add('current-shift');
+        }
 
+        this.timetableElement.appendChild(morningShift);
+
+        const afternoonShift = document.createElement('div');
+        afternoonShift.className = 'timetable-shift';
         const afternoonTitle = document.createElement('h2');
         afternoonTitle.textContent = 'Poslijepodnevna smjena';
-        this.timetableElement.appendChild(afternoonTitle);
-        this.timetableElement.appendChild(this.renderShift(data, 'afternoon'));
-
+        afternoonShift.appendChild(afternoonTitle);
+        afternoonShift.appendChild(this.renderShift(data, 'afternoon'));
+        if (currentShift === 'afternoon') {
+            afternoonShift.classList.add('current-shift');
+        }
+        this.timetableElement.appendChild(afternoonShift);
+            
         //set css variable --color to data.color
         if (data && data.color) {
             this.timetableElement.style.setProperty('--color', data.color);

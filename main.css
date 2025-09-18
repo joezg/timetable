@@ -41,6 +41,14 @@ nav a.selected {
     font-size: 1.5em;
 }
 
+.timetable-shift {
+    display: none;
+}
+
+.timetable-shift.current-shift {
+    display: block;
+}
+
 .timetable-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);

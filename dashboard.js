@@ -15,6 +15,21 @@ export const dashboard = {
         dateElement.textContent = `${dayName}, ${today.toLocaleDateString("hr-hr")} ${formattedTime}`;
         this.dashboardElement.appendChild(dateElement);
     },
+    getCurrentShift: function(user) {
+        const today = this.getToday();
+        let currentShift = null
+        if (user.start && user.startingShift) {
+            const startDate = new Date(user.start);
+            const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+            const weekNumber = Math.floor(daysPassed / 7);
+            currentShift = user.startingShift;
+            if (weekNumber % 2 === 1) {
+                currentShift = user.startingShift === 'morning' ? 'afternoon' : 'morning';
+            }
+        }
+
+        return currentShift;
+    },
     renderUser: function(user) {
         const userCard = document.createElement('div');
         userCard.className = 'user-card';
@@ -25,20 +40,11 @@ export const dashboard = {
         userCard.appendChild(userName);
 
         // Add current shift to user card
-        let currentShift = null;
-        if (user.start && user.startingShift) {
-            const startDate = new Date(user.start);
-            const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-            const weekNumber = Math.floor(daysPassed / 7);
-            currentShift = user.startingShift;
-            if (weekNumber % 2 === 1) {
-                currentShift = user.startingShift === 'morning' ? 'afternoon' : 'morning';
-            }
-            const shiftElement = document.createElement('div');
-            shiftElement.className = 'user-shift';
-            shiftElement.textContent = `Trenutna smjena: ${currentShift === 'morning' ? 'jutarnja' : 'poslijepodnevna'}`;
-            userCard.appendChild(shiftElement);
-        }
+        const currentShift = this.getCurrentShift(user);
+        const shiftElement = document.createElement('div');
+        shiftElement.className = 'user-shift';
+        shiftElement.textContent = `Trenutna smjena: ${currentShift === 'morning' ? 'jutarnja' : 'poslijepodnevna'}`;
+        userCard.appendChild(shiftElement);
 
         //tametable can be in chunks (i.e. there is a gap between classes)
         //find the current chunk, if any
