@@ -17,7 +17,7 @@ export const dashboard = {
     },
     getCurrentShift: function(user) {
         const today = this.getToday();
-        let currentShift = null
+        let currentShift = null;
         if (user.start && user.startingShift) {
             const startDate = new Date(user.start);
             const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
@@ -26,8 +26,11 @@ export const dashboard = {
             if (weekNumber % 2 === 1) {
                 currentShift = user.startingShift === 'morning' ? 'afternoon' : 'morning';
             }
-        }
 
+            if (today.getDay() === 6) {
+                currentShift = currentShift === 'morning' ? 'afternoon' : 'morning';
+            }
+        }
         return currentShift;
     },
     renderUser: function(user) {
