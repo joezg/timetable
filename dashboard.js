@@ -2,8 +2,7 @@ import { pluralizeHours, pluralizeMinutes } from "./utils.js";
 
 export const dashboard = {
     getToday: function() {
-        //return new Date();
-        return new Date(2025, 8, 17, 10, 10, 0); // Hardcoded to 18.9.2025 at 11:00
+        return new Date();
     },
     renderCurrentDate: function() {
         // Add today's date as a header with just day name and date

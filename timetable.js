@@ -41,9 +41,9 @@ export const timetable = {
             const dayEn = dayMap[day];
             if (data.shifts[shift][dayEn]) {
                 Object.keys(data.shifts[shift][dayEn]).forEach(hourKey => {
-                if (!usedHours.includes(hourKey)) {
-                    usedHours.push(hourKey);
-                }
+                    if (!usedHours.includes(hourKey)) {
+                        usedHours.push(hourKey);
+                    }
                 });
             }
             });
@@ -54,6 +54,8 @@ export const timetable = {
                 const maxIdx = Math.max(...indices);
                 hourKeys = hourKeys.slice(minIdx, maxIdx + 1);
             }
+
+            hourKeys = hourKeys.filter(h => data.hours[h].shift === shift || !data.hours[h].shift);
         }
 
         // For each hour, render a row
