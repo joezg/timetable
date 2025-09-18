@@ -113,6 +113,22 @@ export const timetable = {
 
     renderTimeTable: function(data) {
         const currentShift = dashboard.getCurrentShift(data);
+
+        const shiftSelector = document.createElement('select');
+        shiftSelector.className = 'shift-selector';
+        const shifts = [
+            { value: 'morning', label: 'Jutarnja smjena' },
+            { value: 'afternoon', label: 'Poslijepodnevna smjena' }
+        ];
+        shifts.forEach(shift => {
+            const option = document.createElement('option');
+            option.value = shift.value;
+            option.textContent = shift.label;
+            if (shift.value === currentShift) option.selected = true;
+            shiftSelector.appendChild(option);
+        });
+        this.timetableElement.appendChild(shiftSelector);
+
         // Render both shifts
         const morningShift = document.createElement('div');
         morningShift.className = 'timetable-shift';
@@ -136,7 +152,17 @@ export const timetable = {
             afternoonShift.classList.add('current-shift');
         }
         this.timetableElement.appendChild(afternoonShift);
-            
+        shiftSelector.addEventListener('change', () => {
+            const selectedShift = shiftSelector.value;
+            if (selectedShift === 'morning') {
+                morningShift.classList.add('current-shift');
+                afternoonShift.classList.remove('current-shift');
+            } else {
+                afternoonShift.classList.add('current-shift');
+                morningShift.classList.remove('current-shift');
+            }
+        });
+        
         //set css variable --color to data.color
         if (data && data.color) {
             this.timetableElement.style.setProperty('--color', data.color);
