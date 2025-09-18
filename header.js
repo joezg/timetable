@@ -17,5 +17,12 @@ export const header = {
         headerElement.appendChild(navElement);
 
         container.appendChild(headerElement);
+        this.changeHeaderColor('#323232'); // Change to desired color
+    },
+    changeHeaderColor: function(color) {
+        const nav = document.querySelector('header nav');
+        if (nav) {
+            nav.style.backgroundColor = color;
+        }
     }
 }

@@ -118,5 +118,10 @@ export const timetable = {
         afternoonTitle.textContent = 'Poslijepodnevna smjena';
         this.timetableElement.appendChild(afternoonTitle);
         this.timetableElement.appendChild(this.renderShift(data, 'afternoon'));
+
+        //set css variable --color to data.color
+        if (data && data.color) {
+            this.timetableElement.style.setProperty('--color', data.color);
+        }
     }
 }

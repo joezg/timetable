@@ -14,9 +14,12 @@ const render = (hash) => {
     contentNode.innerHTML = '';
     if (hash == '') {
         dashboard.init(contentNode, data);
+        header.changeHeaderColor('#323232');
     } else {
         const userName = hash.substring(1);
-        timetable.init(contentNode, data.find(u => u.name === userName));
+        const userData = data.find(u => u.name === userName);
+        timetable.init(contentNode, userData);
+        header.changeHeaderColor(userData.color);
     }
 }
 
