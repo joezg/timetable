@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Raspored sati - Stari</title>
+  <link href="../main.css" rel="stylesheet" />
+</head>
+
+<body>
+<div id="main"></div>
+<script>
+  if (window.location.protocol === 'file:') {
+    const main = document.getElementById('main');
+    main.innerHTML = `
+      <div style="max-width: 720px; margin: 2rem auto; padding: 1rem; font-family: sans-serif; line-height: 1.5;">
+        <h2 style="margin-top: 0;">Pokreni aplikaciju preko lokalnog servera</h2>
+        <p>Ova aplikacija koristi JavaScript module, a preglednik ih blokira kada se stranica otvori kao <code>file://</code>.</p>
+        <p>U ovom folderu pokreni:</p>
+        <pre style="background: #f3f3f3; padding: 0.75rem; border-radius: 6px; overflow-x: auto; color: black;">python3 -m http.server 8080</pre>
+        <p>Zatim otvori: <a href="http://localhost:8080/stari/">http://localhost:8080/stari/</a></p>
+      </div>
+    `;
+  } else {
+    const moduleScript = document.createElement('script');
+    moduleScript.type = 'module';
+    moduleScript.src = '../main.js';
+    document.body.appendChild(moduleScript);
+  }
+</script>
+
+</body>
+</html>

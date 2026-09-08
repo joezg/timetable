@@ -1,18 +1,21 @@
 export const header = {
-    init: function(container, users) {
+    init: function(container, users, options = {}) {
+        const basePath = options.basePath || '/';
         const headerElement = document.createElement('header');
         
         const navElement = document.createElement('nav');
         const dashboardLink = navElement.appendChild(document.createElement('a'));
-        dashboardLink.href = '#';
+        dashboardLink.href = `${basePath}#`;
         dashboardLink.textContent = 'Dashboard';
         dashboardLink.className = 'nav-dashboard';
+        dashboardLink.dataset.navType = 'dashboard';
 
         users.forEach(user => {
             const userLink = document.createElement('a');
-            userLink.href = `#${user.name}`;
+            userLink.href = `${basePath}#${user.name}`;
             userLink.textContent = user.name;
             userLink.className = 'nav-user';
+            userLink.dataset.userName = user.name;
             navElement.appendChild(userLink);
         });
 
@@ -34,7 +37,7 @@ export const header = {
             const userName = hash.substring(1);
             users.forEach(user => {
                 if (user.name === userName) {
-                    const userLink = document.querySelector(`header nav a[href="#${user.name}"]`);
+                    const userLink = document.querySelector(`header nav a[data-user-name="${user.name}"]`);
                     if (userLink) userLink.classList.add('selected');
                 }
             });

@@ -1,10 +1,51 @@
-import data from './timetable.json' with { type: 'json' }; 
 import { header } from './header.js';
 import { dashboard } from './dashboard.js';
 import { timetable } from './timetable.js';
+import { appConfig } from './config.js';
 
 const mainContainer = document.getElementById('main');
-header.init(mainContainer, data);
+
+const normalizePath = (pathname) => pathname.replace(/^\/+|\/+$/g, '');
+
+const getDefaultTimetable = () => appConfig.timetables.find((item) => !item.route) || appConfig.timetables[0];
+
+const getTimetableFromPath = (pathname) => {
+    const defaultTimetable = getDefaultTimetable();
+    const normalizedPath = normalizePath(pathname);
+
+    if (!normalizedPath) {
+        return defaultTimetable;
+    }
+
+    const routeSegment = normalizedPath.split('/')[0];
+    const matched = appConfig.timetables.find((item) => item.route === routeSegment);
+    return matched || defaultTimetable;
+};
+
+const getBasePath = (timetableConfig) => {
+    if (!timetableConfig.route) {
+        return '/';
+    }
+    return `/${timetableConfig.route}/`;
+};
+
+const loadTimetableData = async (timetableConfig) => {
+    const jsonUrl = new URL(timetableConfig.json, import.meta.url);
+    const response = await fetch(jsonUrl);
+
+    if (!response.ok) {
+        throw new Error(`Failed to load timetable JSON from ${timetableConfig.json}`);
+    }
+
+    return response.json();
+};
+
+const timetableConfig = getTimetableFromPath(window.location.pathname);
+const data = await loadTimetableData(timetableConfig);
+
+header.init(mainContainer, data, {
+    basePath: getBasePath(timetableConfig)
+});
 
 const contentNode = document.createElement('div');
 contentNode.id = 'content';
@@ -12,13 +53,22 @@ mainContainer.appendChild(contentNode);
 
 const render = (hash) => {
     contentNode.innerHTML = '';
-    if (hash == '') {
+
+    if (!hash || hash === '#') {
         dashboard.init(contentNode, data);
         header.changeHeaderColor('#525252');
         header.updateSelectedNav('', data);
     } else {
         const userName = hash.substring(1);
         const userData = data.find(u => u.name === userName);
+
+        if (!userData) {
+            dashboard.init(contentNode, data);
+            header.changeHeaderColor('#525252');
+            header.updateSelectedNav('', data);
+            return;
+        }
+
         timetable.init(contentNode, userData);
         header.changeHeaderColor(userData.color);
         header.updateSelectedNav(hash, data);
