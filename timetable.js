@@ -116,25 +116,39 @@ export const timetable = {
                     cell.classList.add('current-day');
                 }
                 let subjects = [];
+                let options = [];
                 let isMandatory = false;
                 let doesNotAttend = false;
                 if (data.shifts && data.shifts[shift] && data.shifts[shift][dayEn] && data.shifts[shift][dayEn][hourKey]) {
-                    subjects = data.shifts[shift][dayEn][hourKey].subjects || [];
-                    if (data.shifts[shift][dayEn][hourKey].status === 'mandatory') {
+                    const hourData = data.shifts[shift][dayEn][hourKey];
+                    subjects = hourData.subjects || [];
+                    options = hourData.options || [];
+                    if (hourData.status === 'mandatory') {
                         isMandatory = true;
                     }
-                    if (data.shifts[shift][dayEn][hourKey].status === 'notAttending') {
+                    if (hourData.status === 'notAttending') {
                         doesNotAttend = true;
                     }
                 }
-                if (subjects.length > 0) {
+                if (subjects.length > 0 || options.length > 0) {
                     // Check if any subject is mandatory
                     if (isMandatory) {
                         cell.classList.add('mandatory-hour');
                     } else if (doesNotAttend) {
                         cell.classList.add('not-attending-hour');
                     }
-                    cell.innerHTML = subjects.map(sub => `<div>${sub.name}${sub.room ? ' (' + sub.room + ')' : ''}</div>`).join('');
+                    if (options.length > 0) {
+                        cell.innerHTML = options
+                            .map(option => {
+                                const isNotAttendingOption = (option.status || '').toLowerCase() === 'notattending';
+                                const optionClass = isNotAttendingOption ? 'subject-option-box not-attending-option' : 'subject-option-box';
+                                return `<div class="${optionClass}">${option.name}${option.room ? ' (' + option.room + ')' : ''}</div>`;
+                            })
+                            .join('');
+                        cell.classList.add('has-options');
+                    } else {
+                        cell.innerHTML = subjects.map(sub => `<div>${sub.name}${sub.room ? ' (' + sub.room + ')' : ''}</div>`).join('');
+                    }
                 } else {
                     cell.innerHTML = '';
                 }

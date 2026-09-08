@@ -157,7 +157,10 @@ export const dashboard = {
         }
         // If at home and currentClass exists and is optional, write it down
         if (userStatus == "atHome" && currentClass && currentClass.status === 'optional') {
-            const className = shiftData[currentClass.hourKey].subjects.map(subject => subject.name).join(', ');
+            const currentHour = shiftData[currentClass.hourKey];
+            const className = (currentHour.options || []).length > 0
+                ? currentHour.options.map(option => `${option.name}${option.room ? ' (' + option.room + ')' : ''}`).join(' ili ')
+                : (currentHour.subjects || []).map(subject => subject.name).join(', ');
             userStatusText += ` (opcionalno: ${className} ${currentClass.hourInfo.start}-${currentClass.hourInfo.end})`;
         }
         const statusElement = document.createElement('div');

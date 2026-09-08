@@ -118,6 +118,26 @@ nav a.selected {
     color: #626262;
 }
 
+.timetable-cell.has-options {
+    gap: 2px;
+}
+
+.subject-option-box {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 8px;
+    padding: 4px 6px;
+    background: rgba(0, 0, 0, 0.18);
+    line-height: 1.25;
+}
+
+.subject-option-box.not-attending-option {
+    color: white;
+    opacity: 0.78;
+    background-color: unset;
+}
+
 .shift-toggle {
     display: flex;
     justify-content: center;
