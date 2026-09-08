@@ -12,7 +12,7 @@ export const header = {
 
         users.forEach(user => {
             const userLink = document.createElement('a');
-            userLink.href = `${basePath}#${user.name}`;
+            userLink.href = `${basePath}#${encodeURIComponent(user.name)}`;
             userLink.textContent = user.name;
             userLink.className = 'nav-user';
             userLink.dataset.userName = user.name;
@@ -34,11 +34,21 @@ export const header = {
             const dashboardLink = document.querySelector('header nav a.nav-dashboard');
             if (dashboardLink) dashboardLink.classList.add('selected');
         } else {
-            const userName = hash.substring(1);
+            let userName = hash.substring(1);
+            try {
+                userName = decodeURIComponent(userName);
+            } catch (_error) {
+                // Keep raw value if hash is not valid URI encoded data.
+            }
+
             users.forEach(user => {
                 if (user.name === userName) {
-                    const userLink = document.querySelector(`header nav a[data-user-name="${user.name}"]`);
-                    if (userLink) userLink.classList.add('selected');
+                    const userLink = document.querySelectorAll('header nav a.nav-user');
+                    userLink.forEach((link) => {
+                        if (link.dataset.userName === user.name) {
+                            link.classList.add('selected');
+                        }
+                    });
                 }
             });
         }

@@ -6,9 +6,9 @@ export const appConfig = {
             json: './timetable.json'
         },
         {
-            name: 'Stari raspored',
-            route: 'stari',
-            json: './timetable_old.json'
+            name: 'Krešić / Lončar',
+            route: 'kl',
+            json: './timetable_KL.json'
         }
     ]
 };

@@ -40,6 +40,18 @@ const loadTimetableData = async (timetableConfig) => {
     return response.json();
 };
 
+const parseHashUserName = (hash) => {
+    if (!hash || hash === '#') {
+        return '';
+    }
+
+    try {
+        return decodeURIComponent(hash.substring(1));
+    } catch (_error) {
+        return hash.substring(1);
+    }
+};
+
 const timetableConfig = getTimetableFromPath(window.location.pathname);
 const data = await loadTimetableData(timetableConfig);
 
@@ -59,7 +71,7 @@ const render = (hash) => {
         header.changeHeaderColor('#525252');
         header.updateSelectedNav('', data);
     } else {
-        const userName = hash.substring(1);
+        const userName = parseHashUserName(hash);
         const userData = data.find(u => u.name === userName);
 
         if (!userData) {
