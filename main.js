@@ -4,29 +4,56 @@ import { timetable } from './timetable.js';
 import { appConfig } from './config.js';
 
 const mainContainer = document.getElementById('main');
+const contentNode = document.createElement('div');
+contentNode.id = 'content';
+mainContainer.appendChild(contentNode);
 
-const normalizePath = (pathname) => pathname.replace(/^\/+|\/+$/g, '');
+const normalizeHash = (hash) => hash.replace(/^#/, '').replace(/^\/+|\/+$/g, '');
 
 const getDefaultTimetable = () => appConfig.timetables.find((item) => !item.route) || appConfig.timetables[0];
 
-const getTimetableFromPath = (pathname) => {
-    const defaultTimetable = getDefaultTimetable();
-    const normalizedPath = normalizePath(pathname);
-
-    if (!normalizedPath) {
-        return defaultTimetable;
+const getTimetableByRoute = (route) => {
+    if (!route) {
+        return null;
     }
-
-    const routeSegment = normalizedPath.split('/')[0];
-    const matched = appConfig.timetables.find((item) => item.route === routeSegment);
-    return matched || defaultTimetable;
+    return appConfig.timetables.find((item) => item.route === route) || null;
 };
 
-const getBasePath = (timetableConfig) => {
-    if (!timetableConfig.route) {
-        return '/';
+const decodeHashPart = (value) => {
+    try {
+        return decodeURIComponent(value);
+    } catch (_error) {
+        return value;
     }
-    return `/${timetableConfig.route}/`;
+};
+
+const parseHashRoute = (hash) => {
+    const defaultTimetable = getDefaultTimetable();
+    const normalizedHash = normalizeHash(hash);
+
+    if (!normalizedHash) {
+        return {
+            timetableConfig: defaultTimetable,
+            userName: ''
+        };
+    }
+
+    const hashParts = normalizedHash.split('/');
+    const firstSegment = decodeHashPart(hashParts[0]);
+    const matchedTimetable = getTimetableByRoute(firstSegment);
+
+    if (!matchedTimetable) {
+        return {
+            timetableConfig: defaultTimetable,
+            userName: decodeHashPart(normalizedHash)
+        };
+    }
+
+    const userPart = hashParts.length > 1 ? hashParts.slice(1).join('/') : '';
+    return {
+        timetableConfig: matchedTimetable,
+        userName: decodeHashPart(userPart)
+    };
 };
 
 const loadTimetableData = async (timetableConfig) => {
@@ -40,53 +67,56 @@ const loadTimetableData = async (timetableConfig) => {
     return response.json();
 };
 
-const parseHashUserName = (hash) => {
-    if (!hash || hash === '#') {
-        return '';
-    }
+let activeTimetableRoute = null;
+let activeData = [];
+let renderToken = 0;
 
-    try {
-        return decodeURIComponent(hash.substring(1));
-    } catch (_error) {
-        return hash.substring(1);
-    }
-};
-
-const timetableConfig = getTimetableFromPath(window.location.pathname);
-const data = await loadTimetableData(timetableConfig);
-
-header.init(mainContainer, data, {
-    basePath: getBasePath(timetableConfig)
-});
-
-const contentNode = document.createElement('div');
-contentNode.id = 'content';
-mainContainer.appendChild(contentNode);
-
-const render = (hash) => {
+const render = (userName) => {
     contentNode.innerHTML = '';
 
-    if (!hash || hash === '#') {
-        dashboard.init(contentNode, data);
+    if (!userName) {
+        dashboard.init(contentNode, activeData);
         header.changeHeaderColor('#525252');
-        header.updateSelectedNav('', data);
+        header.updateSelectedNav('', activeData);
     } else {
-        const userName = parseHashUserName(hash);
-        const userData = data.find(u => u.name === userName);
+        const userData = activeData.find(u => u.name === userName);
 
         if (!userData) {
-            dashboard.init(contentNode, data);
+            dashboard.init(contentNode, activeData);
             header.changeHeaderColor('#525252');
-            header.updateSelectedNav('', data);
+            header.updateSelectedNav('', activeData);
             return;
         }
 
         timetable.init(contentNode, userData);
         header.changeHeaderColor(userData.color);
-        header.updateSelectedNav(hash, data);
+        header.updateSelectedNav(userName, activeData);
     }
-}
+};
 
-render(window.location.hash);
+const renderFromHash = async (hash) => {
+    const token = ++renderToken;
+    const routeState = parseHashRoute(hash);
 
-window.onhashchange = () => render(window.location.hash);
+    if (activeTimetableRoute !== routeState.timetableConfig.route) {
+        const loadedData = await loadTimetableData(routeState.timetableConfig);
+        if (token !== renderToken) {
+            return;
+        }
+
+        activeData = loadedData;
+        activeTimetableRoute = routeState.timetableConfig.route;
+
+        header.init(mainContainer, activeData, {
+            route: activeTimetableRoute
+        });
+    }
+
+    render(routeState.userName);
+};
+
+await renderFromHash(window.location.hash);
+
+window.onhashchange = () => {
+    renderFromHash(window.location.hash);
+};
