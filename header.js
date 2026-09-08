@@ -1,18 +1,24 @@
 export const header = {
     init: function(container, users, options = {}) {
         const route = options.route || '';
+        const currentPath = `${window.location.pathname}${window.location.search}`;
         const existingHeader = container.querySelector('header');
         if (existingHeader) {
             existingHeader.remove();
         }
 
         const buildHash = (userName = '') => {
-            if (!route) {
-                return userName ? `#${encodeURIComponent(userName)}` : '#';
-            }
-            return userName
-                ? `#${encodeURIComponent(route)}/${encodeURIComponent(userName)}`
-                : `#${encodeURIComponent(route)}`;
+            const hashValue = (() => {
+                if (!route) {
+                    return userName ? `#${encodeURIComponent(userName)}` : '#';
+                }
+                return userName
+                    ? `#${encodeURIComponent(route)}/${encodeURIComponent(userName)}`
+                    : `#${encodeURIComponent(route)}`;
+            })();
+
+            // Keep links anchored to current page path (e.g. /timetable/) on GitHub Pages.
+            return `${currentPath}${hashValue}`;
         };
 
         const headerElement = document.createElement('header');

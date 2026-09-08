@@ -16,7 +16,7 @@ const getTimetableByRoute = (route) => {
     if (!route) {
         return null;
     }
-    return appConfig.timetables.find((item) => item.route === route) || null;
+    return appConfig.timetables.find((item) => (item.route || '').toLowerCase() === route.toLowerCase()) || null;
 };
 
 const decodeHashPart = (value) => {
@@ -74,12 +74,14 @@ let renderToken = 0;
 const render = (userName) => {
     contentNode.innerHTML = '';
 
+    const normalizedUserName = userName.toLowerCase();
+
     if (!userName) {
         dashboard.init(contentNode, activeData);
         header.changeHeaderColor('#525252');
         header.updateSelectedNav('', activeData);
     } else {
-        const userData = activeData.find(u => u.name === userName);
+        const userData = activeData.find(u => u.name.toLowerCase() === normalizedUserName);
 
         if (!userData) {
             dashboard.init(contentNode, activeData);
@@ -90,7 +92,7 @@ const render = (userName) => {
 
         timetable.init(contentNode, userData);
         header.changeHeaderColor(userData.color);
-        header.updateSelectedNav(userName, activeData);
+        header.updateSelectedNav(userData.name, activeData);
     }
 };
 
