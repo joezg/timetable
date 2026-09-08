@@ -1,35 +1,62 @@
 [
     {
         "name": "Katarina",
-        "start": "2026-09-07",
-        "startingShift": "afternoon",
+        "start": "2024-09-08",
+        "startingShift": "morning",
         "color": "#800080",
         "shifts": {
             "morning": {
                 "monday": {
-                },
-                "tuesday": {
-                },
-                "wednesday": {
-                },
-                "thursday": {
-                },
-                "friday": {
-                }
-            },
-            "afternoon": {
-                "monday": {
-                    "0A": {
+                    "0M": {
                         "subjects": [
                             {
-                                "name": "vjeronauk",
+                                "name": "hrvatski dopunska",
+                                "room": 4
+                            },
+                            {
+                                "name": "geografija dodatna",
+                                "room": 5
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "geografija",
                                 "room": 1
                             }
                         ],
-                        "status": "notAttending",
-                        "elective": true
+                        "status": "mandatory"
                     },
-                    "1A": {
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "glazbena kultura",
+                                "room": 5
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "matematika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "TZK",
+                                "room": null
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5M": {
                         "subjects": [
                             {
                                 "name": "sat razrednika",
@@ -38,16 +65,104 @@
                         ],
                         "status": "mandatory"
                     },
-                    "2A": {
+                    "6M": {
                         "subjects": [
                             {
-                                "name": "hrvatski",
+                                "name": "vjeronauk",
+                                "room": 1
+                            }
+                        ],
+                        "status": "notAttending",
+                        "elective": true
+                    }
+                },
+                "tuesday": {
+                    "0M": {
+                        "subjects": [
+                            {
+                                "name": "povijest dopunska",
+                                "room": 5
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "talijanski",
                                 "room": 4
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "talijanski",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "engleski",
+                                "room": 1
                             }
                         ],
                         "status": "mandatory"
                     },
-                    "3A": {
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "povijest",
+                                "room": 5
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "priroda",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "informatika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "7M": {
+                        "subjects": [
+                            {
+                                "name": "informatika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                },
+                "wednesday": {
+                    "0M": {
+                        "subjects": [
+                            {
+                                "name": "matematika dopunska",
+                                "room": 2
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "1M": {
                         "subjects": [
                             {
                                 "name": "matematika",
@@ -56,64 +171,34 @@
                         ],
                         "status": "mandatory"
                     },
-                    "4A": {
+                    "2M": {
                         "subjects": [
                             {
-                                "name": "geografija",
+                                "name": "tehnička kultura",
                                 "room": 5
                             }
                         ],
                         "status": "mandatory"
                     },
-                    "5A": {
+                    "3M": {
                         "subjects": [
                             {
-                                "name": "engleski",
-                                "room": 2
+                                "name": "tehnička kultura",
+                                "room": 5
                             }
                         ],
                         "status": "mandatory"
                     },
-                    "6A": {
+                    "4M": {
                         "subjects": [
                             {
-                                "name": "kemija",
-                                "room": 1
-                            }
-                        ],
-                        "status": "mandatory"
-                    }
-                },
-                "tuesday": {
-                    "5M": {
-                        "subjects": [
-                            {
-                                "name": "njemački",
+                                "name": "TZK",
                                 "room": null
                             }
                         ],
-                        "status": "mandatory",
-                        "elective": true
-                    },
-                    "1A": {
-                        "subjects": [
-                            {
-                                "name": "tehnički",
-                                "room": 12
-                            }
-                        ],
                         "status": "mandatory"
                     },
-                    "2A": {
-                        "subjects": [
-                            {
-                                "name": "tehnički",
-                                "room": 12
-                            }
-                        ],
-                        "status": "mandatory"
-                    },
-                    "3A": {
+                    "5M": {
                         "subjects": [
                             {
                                 "name": "hrvatski",
@@ -122,25 +207,140 @@
                         ],
                         "status": "mandatory"
                     },
-                    "4A": {
+                    "6M": {
                         "subjects": [
                             {
-                                "name": "glazbeni",
+                                "name": "njemački",
+                                "room": 14
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    },
+                    "7M": {
+                        "subjects": [
+                            {
+                                "name": "vjeronauk",
+                                "room": 5
+                            }
+                        ],
+                        "status": "notAttending",
+                        "elective": true
+                    }
+                },
+                "thursday": {
+                    "0M": {
+                        "subjects": [
+                            {
+                                "name": "geografija dopunska",
+                                "room": 5
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "priroda",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "matematika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "engleski",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "hrvatski",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "geografija",
                                 "room": 5
                             }
                         ],
                         "status": "mandatory"
                     },
-                    "5A": {
+                    "6M": {
                         "subjects": [
                             {
-                                "name": "tjelesni",
-                                "room": null
+                                "name": "hrvatski",
+                                "room": 4
                             }
                         ],
                         "status": "mandatory"
                     },
-                    "6A": {
+                    "2A": {
+                        "subjects": [
+                            {
+                                "name": "njemački",
+                                "room": 14
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    }
+                },
+                "friday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "matematika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "hrvatski",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "hrvatski",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "engleski",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5M": {
                         "subjects": [
                             {
                                 "name": "povijest",
@@ -148,10 +348,31 @@
                             }
                         ],
                         "status": "mandatory"
+                    },
+                    "7M": {
+                        "subjects": [
+                            {
+                                "name": "engleski dopunska",
+                                "room": 4
+                            }
+                        ],
+                        "status": "optional"
                     }
-                },
-                "wednesday": {
-                    "0A": {
+                }
+            },
+            "afternoon": {
+                "monday": {
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "talijanski",
+                                "room": 13
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    },
+                    "1A": {
                         "subjects": [
                             {
                                 "name": "vjeronauk",
@@ -161,7 +382,16 @@
                         "status": "notAttending",
                         "elective": true
                     },
-                    "1A": {
+                    "2A": {
+                        "subjects": [
+                            {
+                                "name": "glazbena kultura",
+                                "room": 5
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3A": {
                         "subjects": [
                             {
                                 "name": "engleski",
@@ -170,11 +400,77 @@
                         ],
                         "status": "mandatory"
                     },
+                    "4A": {
+                        "subjects": [
+                            {
+                                "name": "hrvatski",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5A": {
+                        "subjects": [
+                            {
+                                "name": "TZK",
+                                "room": null
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6A": {
+                        "subjects": [
+                            {
+                                "name": "matematika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "7A": {
+                        "subjects": [
+                            {
+                                "name": "matematika dopunska",
+                                "room": 2
+                            }
+                        ],
+                        "status": "optional"
+                    }
+                },
+                "tuesday": {
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "njemački",
+                                "room": 14
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    },
+                    "0A": {
+                        "subjects": [
+                            {
+                                "name": "informatika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "1A": {
+                        "subjects": [
+                            {
+                                "name": "informatika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
                     "2A": {
                         "subjects": [
                             {
-                                "name": "fizika",
-                                "room": 12
+                                "name": "priroda",
+                                "room": 1
                             }
                         ],
                         "status": "mandatory"
@@ -191,7 +487,7 @@
                     "4A": {
                         "subjects": [
                             {
-                                "name": "biologija",
+                                "name": "povijest",
                                 "room": 1
                             }
                         ],
@@ -200,7 +496,7 @@
                     "5A": {
                         "subjects": [
                             {
-                                "name": "informatika",
+                                "name": "matematika",
                                 "room": 2
                             }
                         ],
@@ -209,29 +505,19 @@
                     "6A": {
                         "subjects": [
                             {
-                                "name": "informatika",
-                                "room": 2
+                                "name": "geografija dodatna",
+                                "room": 5
                             }
                         ],
-                        "status": "mandatory"
+                        "status": "optional"
                     }
                 },
-                "thursday": {
-                   "6M": {
+                "wednesday": {
+                    "4M": {
                         "subjects": [
                             {
-                                "name": "talijanski",
-                                "room": "2"
-                            }
-                        ],
-                        "status": "mandatory",
-                        "elective": true
-                    },
-                    "0A": {
-                        "subjects": [
-                            {
-                                "name": "talijanski / zbor",
-                                "room": 2
+                                "name": "njemački",
+                                "room": 14
                             }
                         ],
                         "status": "mandatory",
@@ -240,16 +526,17 @@
                     "1A": {
                         "subjects": [
                             {
-                                "name": "povijest",
-                                "room": 1
+                                "name": "vjeronauk",
+                                "room": 5
                             }
                         ],
-                        "status": "mandatory"
+                        "status": "notAttending",
+                        "elective": true
                     },
                     "2A": {
                         "subjects": [
                             {
-                                "name": "tjelesni",
+                                "name": "TZK",
                                 "room": null
                             }
                         ],
@@ -258,8 +545,8 @@
                     "3A": {
                         "subjects": [
                             {
-                                "name": "hrvatski",
-                                "room": 4
+                                "name": "matematika",
+                                "room": 2
                             }
                         ],
                         "status": "mandatory"
@@ -276,8 +563,8 @@
                     "5A": {
                         "subjects": [
                             {
-                                "name": "matematika",
-                                "room": 1
+                                "name": "hrvatski",
+                                "room": 4
                             }
                         ],
                         "status": "mandatory"
@@ -285,28 +572,102 @@
                     "6A": {
                         "subjects": [
                             {
-                                "name": "matematika",
+                                "name": "engleski",
                                 "room": 1
                             }
                         ],
                         "status": "mandatory"
                     }
                 },
-                "friday": {
-                    "0A": {
+                "thursday": {
+                    "5M": {
                         "subjects": [
                             {
-                                "name": "njemački",
-                                "room": null
+                                "name": "talijanski",
+                                "room": 13
                             }
                         ],
                         "status": "mandatory",
                         "elective": true
                     },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "engleski dopunska",
+                                "room": "K"
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "0A": {
+                        "subjects": [
+                            {
+                                "name": "likovna kultura",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
                     "1A": {
                         "subjects": [
                             {
-                                "name": "engleski",
+                                "name": "likovna kultura",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2A": {
+                        "subjects": [
+                            {
+                                "name": "priroda",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3A": {
+                        "subjects": [
+                            {
+                                "name": "hrvatski",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4A": {
+                        "subjects": [
+                            {
+                                "name": "geografija",
+                                "room": 5
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5A": {
+                        "subjects": [
+                            {
+                                "name": "matematika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6A": {
+                        "subjects": [
+                            {
+                                "name": "geografija dopunska",
+                                "room": 5
+                            }
+                        ],
+                        "status": "optional"
+                    }
+                },
+                "friday": {
+                    "1A": {
+                        "subjects": [
+                            {
+                                "name": "povijest",
                                 "room": 5
                             }
                         ],
@@ -315,8 +676,8 @@
                     "2A": {
                         "subjects": [
                             {
-                                "name": "matematika",
-                                "room": 2
+                                "name": "engleski",
+                                "room": 1
                             }
                         ],
                         "status": "mandatory"
@@ -324,8 +685,8 @@
                     "3A": {
                         "subjects": [
                             {
-                                "name": "biologija",
-                                "room": 1
+                                "name": "hrvatski",
+                                "room": 4
                             }
                         ],
                         "status": "mandatory"
@@ -333,16 +694,7 @@
                     "4A": {
                         "subjects": [
                             {
-                                "name": "kemija",
-                                "room": 1
-                            }
-                        ],
-                        "status": "mandatory"
-                    },
-                    "5A": {
-                        "subjects": [
-                            {
-                                "name": "fizika",
+                                "name": "sat razrednika",
                                 "room": 12
                             }
                         ],
