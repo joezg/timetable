@@ -25,7 +25,19 @@ export const timetable = {
 
         // Header row
         const days = ['Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak'];
-        timetableGrid.appendChild(document.createElement('div')); // Empty top-left cell
+        const dayMap = {
+            'Ponedjeljak': 'monday',
+            'Utorak': 'tuesday',
+            'Srijeda': 'wednesday',
+            'Četvrtak': 'thursday',
+            'Petak': 'friday'
+        };
+
+        const topLeftCell = document.createElement('div'); // Empty top-left cell
+        topLeftCell.style.gridColumn = '1';
+        topLeftCell.style.gridRow = '1';
+        timetableGrid.appendChild(topLeftCell);
+
         // Get current day index (0=Monday, 4=Friday)
         const today = dashboard.getToday();
         let jsDay = today.getDay(); // 0=Sunday, 1=Monday, ...
@@ -41,6 +53,8 @@ export const timetable = {
             const dayCell = document.createElement('div');
             dayCell.textContent = day;
             dayCell.className = 'timetable-day-header';
+            dayCell.style.gridColumn = String(idx + 2);
+            dayCell.style.gridRow = '1';
             if (idx === dayIdx) {
                 dayCell.classList.add('current-day');
                 dayCell.appendChild(document.createElement('br'));
@@ -63,13 +77,6 @@ export const timetable = {
         // filter hourKeys to trim hours from the beginning before any class in a shift
         if (data.shifts && data.shifts[shift]) {
             const usedHours = [];
-            const dayMap = {
-                'Ponedjeljak': 'monday',
-                'Utorak': 'tuesday',
-                'Srijeda': 'wednesday',
-                'Četvrtak': 'thursday',
-                'Petak': 'friday'
-            };
             days.forEach(day => {
             const dayEn = dayMap[day];
             if (data.shifts[shift][dayEn]) {
@@ -92,44 +99,75 @@ export const timetable = {
         }
 
         // For each hour, render a row
-        hourKeys.forEach(hourKey => {
+        hourKeys.forEach((hourKey, rowIdx) => {
             const hourInfo = data.hours[hourKey];
 
             const hourRow = document.createElement('div');
             hourRow.textContent = `${hourInfo.start} - ${hourInfo.end}`;
             hourRow.className = 'timetable-hour-row';
+            hourRow.style.gridColumn = '1';
+            hourRow.style.gridRow = String(rowIdx + 2);
             timetableGrid.appendChild(hourRow);
+        });
 
-            days.forEach((day, idx) => {
-                // Map Croatian day to English
-                const dayMap = {
-                    'Ponedjeljak': 'monday',
-                    'Utorak': 'tuesday',
-                    'Srijeda': 'wednesday',
-                    'Četvrtak': 'thursday',
-                    'Petak': 'friday'
-                };
-                const dayEn = dayMap[day];
+        const getHourData = (dayEn, hourKey) => {
+            if (!data.shifts || !data.shifts[shift] || !data.shifts[shift][dayEn] || !data.shifts[shift][dayEn][hourKey]) {
+                return null;
+            }
+            return data.shifts[shift][dayEn][hourKey];
+        };
+
+        const getCellState = (hourData) => {
+            const subjects = hourData?.subjects || [];
+            const options = hourData?.options || [];
+            const isMandatory = hourData?.status === 'mandatory';
+            const doesNotAttend = hourData?.status === 'notAttending';
+            return { subjects, options, isMandatory, doesNotAttend };
+        };
+
+        const getMergeKey = (hourData) => {
+            if (!hourData) {
+                return null;
+            }
+            const { subjects, options } = getCellState(hourData);
+            if (subjects.length === 0 && options.length === 0) {
+                return null;
+            }
+            return JSON.stringify(hourData);
+        };
+
+        days.forEach((day, idx) => {
+            const dayEn = dayMap[day];
+            let rowIdx = 0;
+
+            while (rowIdx < hourKeys.length) {
+                const hourKey = hourKeys[rowIdx];
+                const hourData = getHourData(dayEn, hourKey);
+                const currentMergeKey = getMergeKey(hourData);
+
+                let rowSpan = 1;
+                if (currentMergeKey) {
+                    let nextRowIdx = rowIdx + 1;
+                    while (nextRowIdx < hourKeys.length) {
+                        const nextHourKey = hourKeys[nextRowIdx];
+                        const nextHourData = getHourData(dayEn, nextHourKey);
+                        if (getMergeKey(nextHourData) !== currentMergeKey) {
+                            break;
+                        }
+                        rowSpan += 1;
+                        nextRowIdx += 1;
+                    }
+                }
+
                 let cell = document.createElement('div');
                 cell.className = 'timetable-cell';
+                cell.style.gridColumn = String(idx + 2);
+                cell.style.gridRow = `${rowIdx + 2} / span ${rowSpan}`;
                 if (idx === dayIdx) {
                     cell.classList.add('current-day');
                 }
-                let subjects = [];
-                let options = [];
-                let isMandatory = false;
-                let doesNotAttend = false;
-                if (data.shifts && data.shifts[shift] && data.shifts[shift][dayEn] && data.shifts[shift][dayEn][hourKey]) {
-                    const hourData = data.shifts[shift][dayEn][hourKey];
-                    subjects = hourData.subjects || [];
-                    options = hourData.options || [];
-                    if (hourData.status === 'mandatory') {
-                        isMandatory = true;
-                    }
-                    if (hourData.status === 'notAttending') {
-                        doesNotAttend = true;
-                    }
-                }
+
+                const { subjects, options, isMandatory, doesNotAttend } = getCellState(hourData);
                 if (subjects.length > 0 || options.length > 0) {
                     // Check if any subject is mandatory
                     if (isMandatory) {
@@ -155,8 +193,10 @@ export const timetable = {
                     cell.innerHTML = '';
                 }
                 timetableGrid.appendChild(cell);
-            });
+                rowIdx += rowSpan;
+            }
         });
+
         return timetableGrid;
     },
 
