@@ -1,6 +1,18 @@
 import { pluralizeHours, pluralizeMinutes } from "./utils.js";
 
 export const dashboard = {
+    getShiftLabel: function(user, shift) {
+        const defaultShiftLabels = {
+            morning: 'jutarnja smjena',
+            afternoon: 'poslijepodnevna smjena'
+        };
+
+        if (!shift) {
+            return '';
+        }
+
+        return user?.shiftNames?.[shift] || defaultShiftLabels[shift] || shift;
+    },
     getToday: function() {
         return new Date();
     },
@@ -125,7 +137,7 @@ export const dashboard = {
         if (dayIndex === 0 || dayIndex === 6) {
             shiftElement.textContent = 'Neradni dan';
         } else {
-            shiftElement.textContent = `Trenutna smjena: ${currentShift === 'morning' ? 'jutarnja' : 'poslijepodnevna'}`;
+            shiftElement.textContent = `Trenutna smjena: ${this.getShiftLabel(user, currentShift)}`;
         }
         userCard.appendChild(shiftElement);
 

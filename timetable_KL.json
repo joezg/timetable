@@ -4,6 +4,10 @@
         "start": "2026-09-07",
         "startingShift": "morning",
         "color": "#750495",
+        "shiftNames": {
+            "morning": "crveni tjedan",
+            "afternoon": "plavi tjedan"
+        },
         "shifts": {
             "morning": {
                 "monday": {

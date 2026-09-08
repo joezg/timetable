@@ -207,13 +207,13 @@ export const timetable = {
         const shiftToggle = document.createElement('div');
         shiftToggle.className = 'shift-toggle';
         const shifts = [
-            { value: 'morning', label: 'Jutarnja smjena' },
-            { value: 'afternoon', label: 'Poslijepodnevna smjena' }
+            { value: 'morning' },
+            { value: 'afternoon' }
         ];
         shifts.forEach(shift => {
             const btn = document.createElement('button');
             btn.type = 'button';
-            btn.textContent = shift.label;
+            btn.textContent = dashboard.getShiftLabel(data, shift.value);
             btn.className = 'shift-btn';
             if (shift.value === currentShift) btn.classList.add('selected');
             btn.dataset.shift = shift.value;
