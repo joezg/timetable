@@ -142,12 +142,14 @@ export const timetable = {
                             .map(option => {
                                 const isNotAttendingOption = (option.status || '').toLowerCase() === 'notattending';
                                 const optionClass = isNotAttendingOption ? 'subject-option-box not-attending-option' : 'subject-option-box';
-                                return `<div class="${optionClass}">${option.name}${option.room ? ' (' + option.room + ')' : ''}</div>`;
+                                return `<div class="${optionClass}"><span class="subject-name">${option.name}</span>${option.room ? `<span class="subject-room">${option.room}</span>` : ''}</div>`;
                             })
                             .join('');
                         cell.classList.add('has-options');
                     } else {
-                        cell.innerHTML = subjects.map(sub => `<div>${sub.name}${sub.room ? ' (' + sub.room + ')' : ''}</div>`).join('');
+                        cell.innerHTML = subjects
+                            .map(sub => `<div class="subject-entry"><span class="subject-name">${sub.name}</span>${sub.room ? `<span class="subject-room">${sub.room}</span>` : ''}</div>`)
+                            .join('');
                     }
                 } else {
                     cell.innerHTML = '';
