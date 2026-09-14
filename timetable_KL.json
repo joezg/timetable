@@ -23,8 +23,8 @@
                     "2A": {
                         "subjects": [
                             {
-                                "name": "matematika",
-                                "room": "Mat"
+                                "name": "tjelesni",
+                                "room": "D-V1"
                             }
                         ],
                         "status": "mandatory"
@@ -278,8 +278,8 @@
                     "3A": {
                         "subjects": [
                             {
-                                "name": "tjelesni",
-                                "room": "D-V1"
+                                "name": "matematika",
+                                "room": "Mat"
                             }
                         ],
                         "status": "mandatory"
