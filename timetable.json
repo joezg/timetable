@@ -7,14 +7,346 @@
         "shifts": {
             "morning": {
                 "monday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "engleski",
+                                "room": 5
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "matematika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "kemija",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "hrvatski",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "geografija",
+                                "room": 5
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "tjelesni",
+                                "room": null
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "7M": {
+                        "subjects": [
+                            {
+                                "name": "talijanski",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    },
+                    "1A": {
+                        "subjects": [
+                            {
+                                "name": "talijanski",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    }
                 },
                 "tuesday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "njemački",
+                                "room": 14
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "njemački",
+                                "room": 14
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "povijest",
+                                "room": 5
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "fizika",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "glazbeni",
+                                "room": 5
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "matematika",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "7M": {
+                        "subjects": [
+                            {
+                                "name": "informatika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    },
+                    "1A": {
+                        "subjects": [
+                            {
+                                "name": "informatika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory",
+                        "elective": true
+                    }
                 },
                 "wednesday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "vjeronauk",
+                                "room": 2
+                            }
+                        ],
+                        "status": "notAttending",
+                        "elective": true
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "engleski",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "geografija",
+                                "room": 5
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "tjelesni",
+                                "room": null
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "biologija",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "likovni",
+                                "room": 12
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "7M": {
+                        "subjects": [
+                            {
+                                "name": "likovni",
+                                "room": 12
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
                 },
                 "thursday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "fizika",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "povijest",
+                                "room": 5
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "matematika",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "matematika",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "hrvatski",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "7M": {
+                        "subjects": [
+                            {
+                                "name": "zbor",
+                                "room": null
+                            }
+                        ],
+                        "status": "optional"
+                    }
                 },
                 "friday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "engleski",
+                                "room": 5
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "hrvatski",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "hrvatski",
+                                "room": 4
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "kemija",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "biologija",
+                                "room": 1
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "sat razrednika",
+                                "room": 12
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "7M": {
+                        "subjects": [
+                            {
+                                "name": "vjeronauk",
+                                "room": 2
+                            }
+                        ],
+                        "status": "notAttending",
+                        "elective": true
+                    }
                 }
             },
             "afternoon": {
@@ -148,6 +480,15 @@
                             }
                         ],
                         "status": "mandatory"
+                    },
+                    "7A": {
+                        "subjects": [
+                            {
+                                "name": "Matematika dopunska",
+                                "room": null
+                            }
+                        ],
+                        "status": "optional"
                     }
                 },
                 "wednesday": {
@@ -201,7 +542,8 @@
                         "subjects": [
                             {
                                 "name": "informatika",
-                                "room": 2
+                                "room": 2,
+                                "elective": true
                             }
                         ],
                         "status": "mandatory"
@@ -210,7 +552,8 @@
                         "subjects": [
                             {
                                 "name": "informatika",
-                                "room": 2
+                                "room": 2,
+                                "elective": true
                             }
                         ],
                         "status": "mandatory"
@@ -228,10 +571,15 @@
                         "elective": true
                     },
                     "0A": {
-                        "subjects": [
+                        "options": [
                             {
-                                "name": "talijanski / zbor",
+                                "name": "talijanski",
                                 "room": 2
+                            },
+                            {
+                                "name": "zbor",
+                                "room": null,
+                                "status": "notAttending"
                             }
                         ],
                         "status": "mandatory",
@@ -290,6 +638,15 @@
                             }
                         ],
                         "status": "mandatory"
+                    },
+                    "7A": {
+                        "subjects": [
+                            {
+                                "name": "Matematika dodatna",
+                                "room": null
+                            }
+                        ],
+                        "status": "optional"
                     }
                 },
                 "friday": {
@@ -718,12 +1075,12 @@
                     "1M": {
                         "options": [
                             {
-                                "name": "OiSMuE",
-                                "room": "R06"
+                                "name": "IKT Lab",
+                                "room": "RL230"
                             },
                             {
-                                "name": "IKT Lab",
-                                "room": "RL230",
+                                "name": "OiSMuE",
+                                "room": "R06",
                                 "status": "notAttending"
                             }
                         ],
@@ -732,12 +1089,12 @@
                     "2M": {
                         "options": [
                             {
-                                "name": "OiSMuE",
-                                "room": "R06"
+                                "name": "IKT Lab",
+                                "room": "RL230"
                             },
                             {
-                                "name": "IKT Lab",
-                                "room": "RL230",
+                                "name": "OiSMuE",
+                                "room": "R06",
                                 "status": "notAttending"
                             }
                         ],
@@ -746,12 +1103,12 @@
                     "3M": {
                         "options": [
                             {
-                                "name": "OiSMuE",
-                                "room": "R06"
+                                "name": "IKT Lab",
+                                "room": "RL230"
                             },
                             {
-                                "name": "IKT Lab",
-                                "room": "RL230",
+                                "name": "OiSMuE",
+                                "room": "R06",
                                 "status": "notAttending"
                             }
                         ],
@@ -791,12 +1148,12 @@
                     "1A": {
                         "options": [
                             {
-                                "name": "UuEsPL1",
-                                "room": "EL210"
+                                "name": "UuEsPLab",
+                                "room": "EL211"
                             },
                             {
-                                "name": "UuEsPLab",
-                                "room": "EL211",
+                                "name": "UuEsPL1",
+                                "room": "EL210",
                                 "status": "notAttending"
                             }
                         ],
@@ -805,12 +1162,12 @@
                     "2A": {
                         "options": [
                             {
-                                "name": "UuEsPL1",
-                                "room": "EL210"
+                                "name": "UuEsPLab",
+                                "room": "EL211"
                             },
                             {
-                                "name": "UuEsPLab",
-                                "room": "EL211",
+                                "name": "UuEsPL1",
+                                "room": "EL210",
                                 "status": "notAttending"
                             }
                         ],
@@ -819,12 +1176,12 @@
                     "3A": {
                         "options": [
                             {
-                                "name": "UuEsPL1",
-                                "room": "EL210"
+                                "name": "UuEsPLab",
+                                "room": "EL211"
                             },
                             {
-                                "name": "UuEsPLab",
-                                "room": "EL211",
+                                "name": "UuEsPL1",
+                                "room": "EL210",
                                 "status": "notAttending"
                             }
                         ],
@@ -941,40 +1298,40 @@
                     "1A": {
                         "options": [
                             {
-                                "name": "OiSMuEG",
-                                "room": "R13"
+                                "name": "IKT Lab",
+                                "room": "RL230"
                             },
                             {
-                                "name": "IKT Lab",
-                                "room": "RL230",
+                                "name": "OiSMuEG",
+                                "room": "R13",
                                 "status": "notAttending"
-                            }
+                            }                            
                         ],
                         "status": "mandatory"
                     },
                     "2A": {
                         "options": [
                             {
-                                "name": "OiSMuEG",
-                                "room": "R13"
+                                "name": "IKT Lab",
+                                "room": "RL230"
                             },
                             {
-                                "name": "IKT Lab",
-                                "room": "RL230",
+                                "name": "OiSMuEG",
+                                "room": "R13",
                                 "status": "notAttending"
-                            }
+                            }  
                         ],
                         "status": "mandatory"
                     },
                     "3A": {
                         "options": [
                             {
-                                "name": "OiSMuEG",
-                                "room": "R13"
+                                "name": "IKT Lab",
+                                "room": "RL230"
                             },
                             {
-                                "name": "IKT Lab",
-                                "room": "RL230",
+                                "name": "OiSMuEG",
+                                "room": "R13",
                                 "status": "notAttending"
                             }
                         ],
@@ -1094,12 +1451,12 @@
                     },"4A": {
                         "options": [
                             {
-                                "name": "Tcidue Lab",
-                                "room": "SL025"
+                                "name": "UuELab",
+                                "room": "EL203"
                             },
                             {
-                                "name": "UuELab",
-                                "room": "EL203",
+                                "name": "Tcidue Lab",
+                                "room": "SL025",
                                 "status": "notAttending"
                             }
                         ],
@@ -1108,12 +1465,12 @@
                     "5A": {
                         "options": [
                             {
-                                "name": "Tcidue Lab",
-                                "room": "SL025"
+                                "name": "UuELab",
+                                "room": "EL203"
                             },
                             {
-                                "name": "UuELab",
-                                "room": "EL203",
+                                "name": "Tcidue Lab",
+                                "room": "SL025",
                                 "status": "notAttending"
                             }
                         ],
@@ -1122,12 +1479,12 @@
                     "6A": {
                         "options": [
                             {
-                                "name": "Tcidue Lab",
-                                "room": "SL025"
+                                "name": "UuELab",
+                                "room": "EL203"
                             },
                             {
-                                "name": "UuELab",
-                                "room": "EL203",
+                                "name": "Tcidue Lab",
+                                "room": "SL025",
                                 "status": "notAttending"
                             }
                         ],
