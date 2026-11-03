@@ -90,7 +90,7 @@
                                 "room": 14
                             }
                         ],
-                        "status": "mandatory",
+                        "status": "notAttending",
                         "elective": true
                     },
                     "2M": {
@@ -100,7 +100,7 @@
                                 "room": 14
                             }
                         ],
-                        "status": "mandatory",
+                        "status": "notAttending",
                         "elective": true
                     },
                     "3M": {
@@ -424,7 +424,7 @@
                                 "room": null
                             }
                         ],
-                        "status": "mandatory",
+                        "status": "notAttending",
                         "elective": true
                     },
                     "1A": {
@@ -657,7 +657,7 @@
                                 "room": null
                             }
                         ],
-                        "status": "mandatory",
+                        "status": "notAttending",
                         "elective": true
                     },
                     "1A": {
@@ -1145,15 +1145,29 @@
             },
             "afternoon": {
                 "monday": {
+                    "0A": {
+                        "options": [
+                            {
+                                "name": "UuEsPL1",
+                                "room": "EL210"
+                            },
+                            {
+                                "name": "UuEsPLab",
+                                "room": "EL211",
+                                "status": "notAttending"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
                     "1A": {
                         "options": [
                             {
-                                "name": "UuEsPLab",
-                                "room": "EL211"
+                                "name": "UuEsPL1",
+                                "room": "EL210"
                             },
                             {
-                                "name": "UuEsPL1",
-                                "room": "EL210",
+                                "name": "UuEsPLab",
+                                "room": "EL211",
                                 "status": "notAttending"
                             }
                         ],
@@ -1162,32 +1176,18 @@
                     "2A": {
                         "options": [
                             {
-                                "name": "UuEsPLab",
-                                "room": "EL211"
+                                "name": "UuEsPL1",
+                                "room": "EL210"
                             },
                             {
-                                "name": "UuEsPL1",
-                                "room": "EL210",
+                                "name": "UuEsPLab",
+                                "room": "EL211",
                                 "status": "notAttending"
                             }
                         ],
                         "status": "mandatory"
                     },
                     "3A": {
-                        "options": [
-                            {
-                                "name": "UuEsPLab",
-                                "room": "EL211"
-                            },
-                            {
-                                "name": "UuEsPL1",
-                                "room": "EL210",
-                                "status": "notAttending"
-                            }
-                        ],
-                        "status": "mandatory"
-                    },
-                    "4A": {
                         "subjects": [
                             {
                                 "name": "UuEsP",
@@ -1196,69 +1196,7 @@
                         ],
                         "status": "mandatory"
                     },
-                    "5A": {
-                        "options": [
-                            {
-                                "name": "IKT Lab",
-                                "room": "RL230"
-                            },
-                            {
-                                "name": "OiSMuE",
-                                "room": "R06",
-                                "status": "notAttending"
-                            }
-                        ],
-                        "status": "mandatory"
-                    },
-                    "6A": {
-                        "options": [
-                            {
-                                "name": "IKT Lab",
-                                "room": "RL230"
-                            },
-                            {
-                                "name": "OiSMuE",
-                                "room": "R06",
-                                "status": "notAttending"
-                            }
-                        ],
-                        "status": "mandatory"
-                    },
-                    "7A": {
-                        "options": [
-                            {
-                                "name": "IKT Lab",
-                                "room": "RL230"
-                            },
-                            {
-                                "name": "OiSMuE",
-                                "room": "R06",
-                                "status": "notAttending"
-                            }
-                        ],
-                        "status": "mandatory"
-                    }
-                },
-                "tuesday": {
-                    "1A": {
-                        "subjects": [
-                            {
-                                "name": "UuE",
-                                "room": null
-                            }
-                        ],
-                        "status": "mandatory"
-                    },
-                    "2A": {
-                        "subjects": [
-                            {
-                                "name": "povijest",
-                                "room": null
-                            }
-                        ],
-                        "status": "mandatory"
-                    },
-                    "3A": {
+                    "4A": {
                         "subjects": [
                             {
                                 "name": "matematika",
@@ -1267,34 +1205,17 @@
                         ],
                         "status": "mandatory"
                     },
-                    "4A": {
-                        "subjects": [
-                            {
-                                "name": "tjelesni",
-                                "room": null
-                            }
-                        ],
-                        "status": "mandatory"
-                    },
                     "5A": {
                         "subjects": [
                             {
-                                "name": "engleski",
+                                "name": "etika",
                                 "room": null
                             }
                         ],
                         "status": "mandatory"
-                    },
-                    "6A": {
-                        "subjects": [
-                            {
-                                "name": "etika",
-                                "room": null                            }
-                        ],
-                        "status": "mandatory"
-                    }
+                    }                    
                 },
-                "wednesday": {
+                "tuesday": {
                     "1A": {
                         "options": [
                             {
@@ -1302,8 +1223,8 @@
                                 "room": "RL230"
                             },
                             {
-                                "name": "OiSMuEG",
-                                "room": "R13",
+                                "name": "OiSMuE",
+                                "room": "R06",
                                 "status": "notAttending"
                             }                            
                         ],
@@ -1316,8 +1237,8 @@
                                 "room": "RL230"
                             },
                             {
-                                "name": "OiSMuEG",
-                                "room": "R13",
+                                "name": "OiSMuE",
+                                "room": "R06",
                                 "status": "notAttending"
                             }  
                         ],
@@ -1330,9 +1251,80 @@
                                 "room": "RL230"
                             },
                             {
-                                "name": "OiSMuEG",
-                                "room": "R13",
+                                "name": "OiSMuE",
+                                "room": "R06",
                                 "status": "notAttending"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4A": {
+                        "subjects": [
+                            {
+                                "name": "tjelesni",
+                                "room": null
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5A": {
+                        "subjects": [
+                            {
+                                "name": "UuE",
+                                "room": null
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                },
+                "wednesday": {
+                     "0A": {
+                        "options": [
+                            {
+                                "name": "OiSMuEG",
+                                "room": "R13"
+                            },
+                            {
+                                "name": "IKT Lab",
+                                "room": "RL230",
+                                "status": "notAttending"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "1A": {
+                        "options": [
+                            {
+                                "name": "OiSMuEG",
+                                "room": "R13"
+                            },
+                            {
+                                "name": "IKT Lab",
+                                "room": "RL230",
+                                "status": "notAttending"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2A": {
+                        "options": [
+                            {
+                                "name": "OiSMuEG",
+                                "room": "R13"
+                            },
+                            {
+                                "name": "IKT Lab",
+                                "room": "RL230",
+                                "status": "notAttending"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3A": {
+                        "subjects": [
+                            {
+                                "name": "hrvatski",
+                                "room": null
                             }
                         ],
                         "status": "mandatory"
@@ -1349,7 +1341,7 @@
                     "5A": {
                         "subjects": [
                             {
-                                "name": "hrvatski",
+                                "name": "povijest",
                                 "room": null
                             }
                         ],
@@ -1358,24 +1350,23 @@
                     "6A": {
                         "subjects": [
                             {
-                                "name": "hrvatski",
-                                "room": null
-                            }
+                                "name": "engleski",
+                                "room": null                            }
                         ],
                         "status": "mandatory"
                     }
                 },
                 "thursday": {
-                    "1A": {
+                    "0A": {
                         "subjects": [
                             {
-                                "name": "UuE",
+                                "name": "hrvatski",
                                 "room": null
                             }
                         ],
                         "status": "mandatory"
                     },
-                    "2A": {
+                    "1A": {
                         "subjects": [
                             {
                                 "name": "SRO",
@@ -1384,10 +1375,19 @@
                         ],
                         "status": "mandatory"
                     },
+                    "2A": {
+                        "subjects": [
+                            {
+                                "name": "matematika",
+                                "room": null
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
                     "3A": {
                         "subjects": [
                             {
-                                "name": "hrvatski",
+                                "name": "UuE",
                                 "room": null
                             }
                         ],
@@ -1396,7 +1396,7 @@
                     "4A": {
                         "subjects": [
                             {
-                                "name": "matematika",
+                                "name": "engleski",
                                 "room": null
                             }
                         ],
@@ -1410,18 +1410,18 @@
                             }
                         ],
                         "status": "mandatory"
-                    },
-                    "6A": {
+                    }
+                },
+                "friday": {
+                    "0A": {
                         "subjects": [
                             {
-                                "name": "engleski",
+                                "name": "hrvatski",
                                 "room": null
                             }
                         ],
                         "status": "mandatory"
-                    }
-                },
-                "friday": {
+                    },
                     "1A": {
                         "subjects": [
                             {
@@ -1448,15 +1448,16 @@
                             }
                         ],
                         "status": "mandatory"
-                    },"4A": {
+                    },
+                    "4A": {
                         "options": [
                             {
-                                "name": "UuELab",
-                                "room": "EL203"
+                                "name": "Tcidue Lab",
+                                "room": "SL025"
                             },
                             {
-                                "name": "Tcidue Lab",
-                                "room": "SL025",
+                                "name": "UuELab",
+                                "room": "EL203",
                                 "status": "notAttending"
                             }
                         ],
@@ -1465,12 +1466,12 @@
                     "5A": {
                         "options": [
                             {
-                                "name": "UuELab",
-                                "room": "EL203"
+                                "name": "Tcidue Lab",
+                                "room": "SL025"
                             },
                             {
-                                "name": "Tcidue Lab",
-                                "room": "SL025",
+                                "name": "UuELab",
+                                "room": "EL203",
                                 "status": "notAttending"
                             }
                         ],
@@ -1479,12 +1480,12 @@
                     "6A": {
                         "options": [
                             {
-                                "name": "UuELab",
-                                "room": "EL203"
+                                "name": "Tcidue Lab",
+                                "room": "SL025"
                             },
                             {
-                                "name": "Tcidue Lab",
-                                "room": "SL025",
+                                "name": "UuELab",
+                                "room": "EL203",
                                 "status": "notAttending"
                             }
                         ],
@@ -1558,6 +1559,538 @@
             },
             "7A": {
                 "start": "19:15",
+                "end": "19:55"
+            }
+        }
+    },
+    {
+        "name": "Jurica",
+        "start": "2026-09-07",
+        "startingShift": "morning",
+        "color": "#c2185b",
+        "shifts": {
+            "morning": {
+                "monday": {
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "4.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "4.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "7M": {
+                        "subjects": [
+                            {
+                                "name": "ina",
+                                "room": null
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "1A": {
+                        "subjects": [
+                            {
+                                "name": "4.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2A": {
+                        "subjects": [
+                            {
+                                "name": "4.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                },
+                "tuesday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "8.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "8.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "8.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "8.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                },
+                "wednesday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "6.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "6.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "6.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "6.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                },
+                "thursday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "3.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "3.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "IKT",
+                                "room": null
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "IKT",
+                                "room": null
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "3.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "3.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                },
+                "friday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "2.B",
+                                "room": "Z"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "2.B",
+                                "room": "Z"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "informacije",
+                                "room": null
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "2.A",
+                                "room": "Z"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "2.A",
+                                "room": "Z"
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                }
+            },
+            "afternoon": {
+                "monday": {
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "4.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "4.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "0A": {
+                        "subjects": [
+                            {
+                                "name": "4.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "1A": {
+                        "subjects": [
+                            {
+                                "name": "4.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                },
+                "tuesday": {
+                    "3A": {
+                        "subjects": [
+                            {
+                                "name": "8.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4A": {
+                        "subjects": [
+                            {
+                                "name": "8.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "5A": {
+                        "subjects": [
+                            {
+                                "name": "8.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6A": {
+                        "subjects": [
+                            {
+                                "name": "8.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                },
+                "wednesday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "2.A",
+                                "room": "Z"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "2.A",
+                                "room": "Z"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "informacije",
+                                "room": null
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "3.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "3.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                },
+                "thursday": {
+                    "2A": {
+                        "subjects": [
+                            {
+                                "name": "6.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3A": {
+                        "subjects": [
+                            {
+                                "name": "6.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "4A": {
+                        "subjects": [
+                            {
+                                "name": "informacije",
+                                "room": null
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "5A": {
+                        "subjects": [
+                            {
+                                "name": "6.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6A": {
+                        "subjects": [
+                            {
+                                "name": "6.B",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                },
+                "friday": {
+                    "1M": {
+                        "subjects": [
+                            {
+                                "name": "2.B",
+                                "room": "Z"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "2M": {
+                        "subjects": [
+                            {
+                                "name": "2.B",
+                                "room": "Z"
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "3M": {
+                        "subjects": [
+                            {
+                                "name": "IKT",
+                                "room": null
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "4M": {
+                        "subjects": [
+                            {
+                                "name": "IKT",
+                                "room": null
+                            }
+                        ],
+                        "status": "optional"
+                    },
+                    "5M": {
+                        "subjects": [
+                            {
+                                "name": "3.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    },
+                    "6M": {
+                        "subjects": [
+                            {
+                                "name": "3.A",
+                                "room": 2
+                            }
+                        ],
+                        "status": "mandatory"
+                    }
+                }
+            }
+        },
+        "hours": {
+            "0M": {
+                "start": "7:05",
+                "end": "7:50"
+            },
+            "1M": {
+                "start": "8:00",
+                "end": "8:45"
+            },
+            "2M": {
+                "start": "8:50",
+                "end": "9:35"
+            },
+            "3M": {
+                "start": "9:50",
+                "end": "10:35"
+            },
+            "4M": {
+                "start": "10:40",
+                "end": "11:25"
+            },
+            "5M": {
+                "start": "11:30",
+                "end": "12:15"
+            },
+            "6M": {
+                "start": "12:20",
+                "end": "13:05"
+            },
+            "7M": {
+                "start": "13:10",
+                "end": "13:55",
+                "shift": "morning"
+            },
+            "0A": {
+                "start": "13:10",
+                "end": "13:55",
+                "shift": "afternoon"
+            },
+            "1A": {
+                "start": "14:00",
+                "end": "14:45"
+            },
+            "2A": {
+                "start": "14:50",
+                "end": "15:35"
+            },
+            "3A": {
+                "start": "15:50",
+                "end": "16:35"
+            },
+            "4A": {
+                "start": "16:40",
+                "end": "17:25"
+            },
+            "5A": {
+                "start": "17:30",
+                "end": "18:15"
+            },
+            "6A": {
+                "start": "18:20",
+                "end": "19:05"
+            },
+            "7A": {
+                "start": "19:10",
                 "end": "19:55"
             }
         }
